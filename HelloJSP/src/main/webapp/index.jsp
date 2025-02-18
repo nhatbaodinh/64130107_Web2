@@ -14,7 +14,9 @@ int x, y;
 x = 5;
 y = x + 10;
 %>
+<hr>
 <%=y%>
+<hr>
 <% out.print(y); %>
 </body>
 </html>
