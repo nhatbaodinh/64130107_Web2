@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>nhatbaodinh</groupId>
-    <artifactId>ChatSpringBoot</artifactId>
+    <artifactId>SB_HelloSpringBoot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ChatSpringBoot</name>
     <description>ChatSpringBoot</description>
