@@ -12,10 +12,6 @@
     <list default="true" id="e22c13d6-4d96-4e42-b4e5-12e5edda4425" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/nhatbaodinh/controller/WelcomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/nhatbaodinh/controller/WelcomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/configs/spring-config-mvc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/welcome.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,8 +64,10 @@
     "Maven. [org.apache.maven.plugins:maven-archetype-plugin:RELEASE:generate].executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "Smart Tomcat.Smart Tomcat.executor": "Run",
     "Smart Tomcat.Tomcat 11.0.3.executor": "Run",
     "Tomcat Server.Tomcat 11.0.3.executor": "Run",
+    "Tomcat Server.Tomcat Server.executor": "Run",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -140,7 +138,7 @@
       <updated>1740737506584</updated>
       <workItem from="1740737508559" duration="1615000" />
       <workItem from="1740749442812" duration="951000" />
-      <workItem from="1740970742245" duration="1586000" />
+      <workItem from="1740970742245" duration="2920000" />
     </task>
     <servers />
   </component>
