@@ -1,0 +1,70 @@
+<!-- dsobject.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DSObject</title>
+</head>
+<body>
+    <h1>DS Object</h1>
+    <table border="1">
+        <tr>
+            <th>MSSV</th>
+            <th>Họ Tên</th>
+            <th>Giới Tính</th>
+            <th>Năm Sinh</th>
+        </tr>
+        <tr th:each="student : ${students}">
+            <td th:text="${student.MSSV}"></td>
+            <td th:text="${student.hoTen}"></td>
+            <td th:text="${student.gioiTinh ? 'Nam' : 'Nữ'}"></td>
+            <td th:text="${student.namSinh}"></td>
+        </tr>
+    </table>
+</body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 10px;
+        text-align: left;
+    }
+    th {
+        background-color: #f4f4f4;
+    }
+    tr:nth-child(even) {
+        background-color: #f4f4f4;
+    }
+    tr:nth-child(odd) {
+        background-color: #fff;
+    }
+    th {
+        background-color: #333;
+        color: #fff;
+    }
+    th, td {
+        border: 1px solid #ddd;
+    }
+    th:first-child, td:first-child {
+        border-left: none;
+    }
+    th:last-child, td:last-child {
+        border-right: none;
+    }
+    tr:last-child th, tr:last-child td {
+        border-bottom: none;
+    }
+</style>
+</html>
