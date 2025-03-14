@@ -1,5 +1,6 @@
 package controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import models.StudentModel;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -34,5 +35,17 @@ public class DisplayData {
     students.add(new StudentModel("64130109", "Trần Thị B", false, 2004));
     model.addAttribute("students", students);
     return "dsobject";
+  }
+
+  @RequestMapping("/login")
+  public String login(HttpServletRequest request, ModelMap model) {
+    String id = request.getParameter("id");
+    String pw = request.getParameter("pw");
+
+    if (id != null && !id.isEmpty()) {
+      model.addAttribute("id", id);
+    }
+
+    return "user";
   }
 }

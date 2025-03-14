@@ -1,5 +1,10 @@
 package models;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class StudentModel {
   private String MSSV;
   private String hoTen;
@@ -11,21 +16,5 @@ public class StudentModel {
     this.hoTen = hoTen;
     this.gioiTinh = gioiTinh;
     this.namSinh = namSinh;
-  }
-
-  public String getMSSV() {
-    return MSSV;
-  }
-
-  public String getHoTen() {
-    return hoTen;
-  }
-
-  public boolean isGioiTinh() {
-    return gioiTinh;
-  }
-
-  public int getNamSinh() {
-    return namSinh;
   }
 }

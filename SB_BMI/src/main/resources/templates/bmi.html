@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SB_BMI</title>
+</head>
+<body>
+    <h1>BMI</h1>
+    <form action="/bmi" method="get">
+        <label for="height">Chiều cao (m):</label>
+        <input type="text" id="height" name="height" required>
+        <br>
+        <label for="weight">Cân nặng (kg):</label>
+        <input type="text" id="weight" name="weight" required>
+        <br>
+        <button type="submit">Tính</button>
+    </form>
+    <div>
+        <h2>Result:</h2>
+        <p>Height: ${height}</p>
+        <p>Weight: ${weight}</p>
+        <p>BMI Result: ${result}</p>
+        <p style="color:red;">${error}</p>
+    </div>
+</body>
+</html>
