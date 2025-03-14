@@ -1,26 +1,94 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <title>SB_BMI</title>
 </head>
 <body>
-    <h1>BMI</h1>
-    <form action="/bmi" method="get">
-        <label for="height">Chiều cao (m):</label>
-        <input type="text" id="height" name="height" required>
-        <br>
-        <label for="weight">Cân nặng (kg):</label>
-        <input type="text" id="weight" name="weight" required>
-        <br>
-        <button type="submit">Tính</button>
-    </form>
-    <div>
-        <h2>Result:</h2>
-        <p>Height: ${height}</p>
-        <p>Weight: ${weight}</p>
-        <p>BMI Result: ${result}</p>
-        <p style="color:red;">${error}</p>
-    </div>
+<h1>Tính chỉ số BMI</h1>
+<form action="/bmi" method="get">
+    <label for="height">Chiều cao (m):</label>
+    <input type="text" id="height" name="height" required>
+    <br>
+    <label for="weight">Cân nặng (kg):</label>
+    <input type="text" id="weight" name="weight" required>
+    <br>
+    <button type="submit">Tính</button>
+</form>
+<div>
+    <h2>Kết quả:</h2>
+    <p><strong>Chiều cao:</strong> <span th:text="${height}"></span> m</p>
+    <p><strong>Cân nặng:</strong> <span th:text="${weight}"></span> kg</p>
+    <p><strong>BMI:</strong> <span th:text="${result}"></span></p>
+    <p style="color:red;" th:if="${error}" th:text="${error}"></p>
+</div>
 </body>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #3498db;
+    }
+
+    form {
+        background: white;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin: 10px 0 5px;
+    }
+
+    input {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+    button {
+        background-color: #2ecc71;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #27ae60;
+    }
+
+    div {
+        background: white;
+        max-width: 400px;
+        margin: 20px auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    p {
+        font-size: 18px;
+        margin: 5px 0;
+    }
+
+    p span {
+        font-weight: bold;
+        color: #e74c3c;
+    }
+</style>
 </html>

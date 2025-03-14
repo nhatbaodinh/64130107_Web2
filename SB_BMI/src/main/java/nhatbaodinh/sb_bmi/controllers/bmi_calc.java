@@ -8,24 +8,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class bmi_calc {
   @RequestMapping("/bmi")
-  public String bmi(@RequestParam(name="height", defaultValue="0.0", required=true) float height,
-                    @RequestParam(name="weight", defaultValue="0.0", required=true) float weight,
-                    @RequestParam(name="result", defaultValue="Normal", required=true) String result,
+  public String bmi(@RequestParam(name = "height", required = false, defaultValue = "0") float height,
+                    @RequestParam(name = "weight", required = false, defaultValue = "0") float weight,
                     ModelMap model) {
+
     if (height <= 0 || weight <= 0) {
-      model.addAttribute("error", "Vui lòng nhập chiều cao và cân nặng hợp lệ!");
+      model.addAttribute("error", "Nhập chiều cao và cân nặng hợp lệ!");
       return "bmi";
     }
-    float bmi = (weight/(height*height));
-    if(bmi < 18.5) {
+
+    float bmi = weight / (height * height);
+    String result;
+
+    if (bmi < 18.5) {
       result = "Ốm!";
-    } else if(bmi < 25) {
+    } else if (bmi < 25) {
       result = "Bình thường!";
-    } else if(bmi < 30) {
+    } else if (bmi < 30) {
       result = "Thừa cân!";
     } else {
       result = "Béo phì!";
     }
+
     model.addAttribute("height", height);
     model.addAttribute("weight", weight);
     model.addAttribute("result", result);
