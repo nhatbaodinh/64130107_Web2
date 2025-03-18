@@ -45,7 +45,6 @@ public class DisplayData {
     if (id != null && !id.isEmpty()) {
       model.addAttribute("id", id);
     }
-
     return "user";
   }
 }
