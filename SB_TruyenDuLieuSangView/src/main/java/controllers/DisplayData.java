@@ -36,15 +36,4 @@ public class DisplayData {
     model.addAttribute("students", students);
     return "dsobject";
   }
-
-  @RequestMapping("/login")
-  public String login(HttpServletRequest request, ModelMap model) {
-    String id = request.getParameter("id");
-    String pw = request.getParameter("pw");
-
-    if (id != null && !id.isEmpty()) {
-      model.addAttribute("id", id);
-    }
-    return "user";
-  }
 }
