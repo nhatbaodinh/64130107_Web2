@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>List</title>
+</head>
+<body th:fragment="list">
+  <h1>DS Sinh Viên</h1>
+  <table border="1">
+    <tr>
+      <th>MSSV</th>
+      <th>Họ Tên</th>
+      <th>Điểm trung bình</th>
+    </tr>
+    <tr th:each="sinhvien : ${dsSinhVien}">
+      <td th:text="${sinhvien.MSSV}"></td>
+      <td th:text="${sinhvien.hoTen}"></td>
+      <td th:text="${sinhvien.diemTB}"></td>
+    </tr>
+  </table>
+</body>
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+  }
+  h1 {
+      text-align: center;
+      color: #333;
+  }
+  table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0 auto; /* This centers the table */
+  }
+  th, td {
+      padding: 10px;
+      text-align: left;
+  }
+  th {
+      background-color: #f4f4f4;
+  }
+  tr:nth-child(even) {
+      background-color: #f4f4f4;
+  }
+  tr:nth-child(odd) {
+      background-color: #fff;
+  }
+  th {
+      background-color: #333;
+      color: #fff;
+  }
+  th, td {
+      border: 1px solid #ddd;
+  }
+  th:first-child, td:first-child {
+      border-left: none;
+  }
+  th:last-child, td:last-child {
+      border-right: none;
+  }
+  tr:last-child th, tr:last-child td {
+  }
+</style>
+</html>

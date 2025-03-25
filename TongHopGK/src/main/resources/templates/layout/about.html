@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <title>About</title>
 </head>
-<body>
-  <!--back button-->
-  <a href="javascript:history.back()">Back</a>
+<body th:fragment="about">
   <h1>About</h1>
   <p>MSSV: <span th:text="${student.MSSV}"></span></p>
   <p>Họ Tên: <span th:text="${student.hoTen}"></span></p>
@@ -35,14 +33,6 @@
   span {
     font-weight: bold;
     color: #007bff;
-  }
-
-  a {
-    display: block;
-    margin-top: 20px;
-    margin-left: 20px;
-    color: #007bff;
-    text-decoration: none;
   }
 </style>
 </html>
