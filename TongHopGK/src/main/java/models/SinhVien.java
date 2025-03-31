@@ -1,18 +1,16 @@
 package models;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class SinhVien {
-  String MSSV;
-  String hoTen;
-  double diemTB;
-
-  public SinhVien(String MSSV, String hoTen, double diemTB) {
-    this.MSSV = MSSV;
-    this.hoTen = hoTen;
-    this.diemTB = diemTB;
-  }
+  private String MSSV;
+  private String hoTen;
+  private double diemTB;
 }
