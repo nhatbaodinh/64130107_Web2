@@ -49,7 +49,7 @@ public class PathController {
   public String saveTopic(@ModelAttribute Topic topic, Model model) {
     topics.add(topic);
     model.addAttribute("topics", topics);
-    return "index";
+    return "fragments/topic-all";
   }
 
   @GetMapping("/topic/view/{id}")
@@ -66,7 +66,7 @@ public class PathController {
   public String deleteTopic(@PathVariable String id, Model model) {
     topics.removeIf(t -> t.getId().equals(id));
     model.addAttribute("topics", topics);
-    return "fragments/topic-all";
+    return "index";
   }
 
   @GetMapping("/student/all")
@@ -85,7 +85,7 @@ public class PathController {
   public String saveStudent(@ModelAttribute Student student, Model model) {
     students.add(student);
     model.addAttribute("students", students);
-    return "index";
+    return "fragments/student-all";
   }
 
   @GetMapping("/student/view/{id}")
@@ -102,6 +102,6 @@ public class PathController {
   public String deleteStudent(@PathVariable String id, Model model) {
     students.removeIf(s -> s.getId().equals(id));
     model.addAttribute("students", students);
-    return "fragments/student-all";
+    return "index";
   }
 }

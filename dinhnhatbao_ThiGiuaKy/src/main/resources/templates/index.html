@@ -34,10 +34,10 @@
           <a href="#" class="nav-link load-content" data-url="/topic/new">Topic - Addnew</a>
         </li>
         <li class="nav-item border-bottom py-2">
-          <a href="#" class="nav-link">Student - List</a>
+          <a href="#" class="nav-link load-content" data-url="/student/all">Student - List</a>
         </li>
         <li class="nav-item border-bottom py-2">
-          <a href="#" class="nav-link">Student - Addnew</a>
+          <a href="#" class="nav-link load-content" data-url="/student/new">Student - Addnew</a>
         </li>
       </ul>
     </div>
@@ -72,13 +72,22 @@
         $(".load-content").click(function(e) {
             e.preventDefault();
             var url = $(this).data("url");
-
             $.get(url, function(data) {
                 $("#content").html(data);
             });
         });
+
+        $(document).on("submit", "form", function(e) {
+            e.preventDefault();
+            var form = $(this);
+            var url = form.attr("action");
+            var formData = form.serialize();
+
+            $.post(url, formData, function(response) {
+                $("#content").html(response);
+            });
+        });
     });
 </script>
-
 </body>
 </html>
