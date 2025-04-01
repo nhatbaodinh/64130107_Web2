@@ -27,9 +27,12 @@
       <td th:text="${topic.supervisorId}"></td>
       <td th:text="${topic.topicType}"></td>
       <td>
-        <a href="#" class="btn btn-primary btn-sm">View</a>
-        <a href="#" class="btn btn-warning btn-sm">Edit</a>
-        <a href="#" class="btn btn-danger btn-sm">Delete</a>
+        <a th:href="@{/topic/view/{id}(id=${topic.id})}" class="btn btn-primary btn-sm">View</a>
+        <a th:href="@{/topic/edit/{id}(id=${topic.id})}" class="btn btn-warning btn-sm">Edit</a>
+        <a th:href="@{/topic/delete/{id}(id=${topic.id})}" class="btn btn-danger btn-sm"
+           onclick="return confirm('Bạn có chắc chắn muốn xóa đề tài này?');">
+          Delete
+        </a>
       </td>
     </tr>
     </tbody>
