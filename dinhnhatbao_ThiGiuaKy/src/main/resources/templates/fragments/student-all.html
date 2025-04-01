@@ -9,33 +9,30 @@
 </head>
 <body>
 <div th:fragment="studentList" id="content" class="container mt-4">
-  <h2 class="mb-3">Danh sách Sinh viên</h2>
+  <h1 class="mb-3">Danh sách Sinh viên</h1>
   <table class="table table-bordered">
     <thead class="table-dark">
     <tr>
       <th>ID</th>
       <th>Họ và Tên</th>
-      <th>ID Đề Tài</th>
+      <th>Topic ID</th>
       <th>Hành động</th>
     </tr>
-    </thead>
+    </thead >
     <tbody>
-    <!-- Lặp qua danh sách sinh viên -->
     <tr th:each="student : ${students}">
       <td th:text="${student.id}"></td>
-      <td th:text="${student.fullName}"></td>
-      <td th:text="${student.topicId}"></td>
+      <td th:text="${student.name}"></td>
+      <td th:text="${student.groupId}"></td>
       <td>
-        <a href="#" class="btn btn-primary btn-sm btn-view-student" th:data-id="${student.id}">View</a>
-        <a th:href="@{/student/edit/{id}(id=${student.id})}" class="btn btn-warning btn-sm">Edit</a>
-        <a th:href="@{/student/delete/{id}(id=${student.id})}" class="btn btn-danger btn-sm"
-           onclick="return confirm('Bạn có chắc chắn muốn xóa sinh viên này?');">
-          Delete
-        </a>
+        <a th:href="@{/student/view/{id}(id=${student.id})}">View</a> |
+        <a th:href="@{/student/edit/{id}(id=${student.id})}">Edit</a> |
+        <a th:href="@{/student/delete/{id}(id=${student.id})}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Delete</a>
       </td>
     </tr>
     </tbody>
   </table>
+  <br>
 </div>
 </body>
 </html>

@@ -72,8 +72,11 @@
         $(".load-content").click(function(e) {
             e.preventDefault();
             var url = $(this).data("url");
+
             $.get(url, function(data) {
                 $("#content").html(data);
+            }).fail(function(xhr) {
+                alert("Lỗi tải nội dung: " + xhr.status + " " + xhr.statusText);
             });
         });
 
