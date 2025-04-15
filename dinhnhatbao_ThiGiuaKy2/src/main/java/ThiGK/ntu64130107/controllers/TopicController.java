@@ -23,13 +23,19 @@ public class TopicController {
   @GetMapping("/topic/all")
   public String getAllTopics(Model model) {
     model.addAttribute("topics", topics);
-    return "";
+    return "topicList";
   }
 
   @GetMapping("/topic/new")
   public String getNewTopic(Model model) {
     model.addAttribute("topic", new Topic());
-    return "";
+    return "topicForm";
+  }
+
+  @PostMapping("/topic/new")
+  public String postNewTopic(@ModelAttribute Topic topic) {
+    topics.add(topic);
+    return "redirect:/topic/all";
   }
 
   @GetMapping("/topic/view/{id}")
@@ -39,7 +45,7 @@ public class TopicController {
         .findFirst()
         .orElse(null);
     model.addAttribute("topic", found);
-    return "";
+    return "topicView";
   }
 
   @GetMapping("/topic/edit/{id}")
@@ -49,12 +55,27 @@ public class TopicController {
         .findFirst()
         .orElse(null);
     model.addAttribute("topic", found);
-    return "";
+    return "topicEdit";
+  }
+
+  @PostMapping("/topic/edit/{id}")
+  public String postEditTopic(@PathVariable String id, @ModelAttribute Topic topic) {
+    Topic found = topics.stream()
+        .filter(t -> t.getId().equals(id))
+        .findFirst()
+        .orElse(null);
+    if (found != null) {
+      found.setTopicName(topic.getTopicName());
+      found.setTopicDescription(topic.getTopicDescription());
+      found.setSupervisorId(topic.getSupervisorId());
+      found.setTopicType(topic.getTopicType());
+    }
+    return "redirect:/topic/all";
   }
 
   @GetMapping("/topic/delete/{id}")
-  public String getDeleteTopic(@PathVariable String id, Model model) {
+  public String getDeleteTopic(@PathVariable String id) {
     topics.removeIf(t -> t.getId().equals(id));
-    return "";
+    return "redirect:/topic/all";
   }
 }

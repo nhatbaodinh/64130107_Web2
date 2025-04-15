@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Topic - Edit</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<div class="main">
+  <div th:replace="layout::sidebar"></div>
+  <div class="content">
+    <div class="header" th:replace="layout::header"></div>
+    <div class="main-content">
+      <h1 class="title-page">Topic - Edit</h1>
+      <form th:action="@{/topic/edit/{id}(id=${topic.id})}" th:object="${topic}" method="post">
+        <div>
+          <label for="id">ID:</label>
+          <input type="text" id="id" th:field="*{id}" disabled />
+        </div>
+
+        <div>
+          <label for="topicName">Topic Name:</label>
+          <input type="text" id="topicName" th:field="*{topicName}" required />
+        </div>
+
+        <div>
+          <label for="topicDescription">Description:</label>
+          <textarea id="topicDescription" th:field="*{topicDescription}" required></textarea>
+        </div>
+
+        <div>
+          <label for="supervisorId">Supervisor:</label>
+          <input type="text" id="supervisorId" th:field="*{supervisorId}" required />
+        </div>
+
+        <div>
+          <label for="topicType">Topic Type:</label>
+          <input type="text" id="topicType" th:field="*{topicType}" required />
+        </div>
+
+        <div style="margin-top: 15px;">
+          <button type="submit">Save Changes</button>
+          <a href="/topic/all">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

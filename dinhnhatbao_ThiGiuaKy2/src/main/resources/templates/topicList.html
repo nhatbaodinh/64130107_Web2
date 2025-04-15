@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>All Topics</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<div class="main">
+  <div th:replace="layout::sidebar"></div>
+  <div class="content">
+    <div class="header" th:replace="layout::header"></div>
+    <div class="main-content">
+    <h1 class="title-page">Topic - List</h1>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Supervisor</th>
+        <th>Type</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="topic : ${topics}">
+        <td th:text="${topic.id}"></td>
+        <td th:text="${topic.topicName}"></td>
+        <td th:text="${topic.topicDescription}"></td>
+        <td th:text="${topic.supervisorId}"></td>
+        <td th:text="${topic.topicType}"></td>
+        <td>
+          <a th:href="@{'/topic/view/' + ${topic.id}}">View</a> |
+          <a th:href="@{'/topic/edit/' + ${topic.id}}">Edit</a> |
+          <a th:href="@{'/topic/delete/' + ${topic.id}}"
+             onclick="return confirm('Are you sure you want to delete this topic?');">Delete</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

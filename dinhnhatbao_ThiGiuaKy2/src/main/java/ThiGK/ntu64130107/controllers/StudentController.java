@@ -23,13 +23,19 @@ public class StudentController {
   @GetMapping("/student/all")
   public String getAllStudents(Model model) {
     model.addAttribute("students", students);
-    return "";
+    return "studentList";
   }
 
   @GetMapping("/student/new")
   public String getNewStudent(Model model) {
     model.addAttribute("student", new Student());
-    return "";
+    return "studentForm";
+  }
+
+  @PostMapping("/student/new")
+  public String postNewStudent(@ModelAttribute Student student) {
+    students.add(student);
+    return "redirect:/student/all";
   }
 
   @GetMapping("/student/view/{id}")
@@ -39,7 +45,7 @@ public class StudentController {
         .findFirst()
         .orElse(null);
     model.addAttribute("student", found);
-    return "";
+    return "studentView";
   }
 
   @GetMapping("/student/edit/{id}")
@@ -49,12 +55,25 @@ public class StudentController {
         .findFirst()
         .orElse(null);
     model.addAttribute("student", found);
-    return "";
+    return "studentEdit";
+  }
+
+  @PostMapping("/student/edit/{id}")
+  public String postEditStudent(@PathVariable String id, @ModelAttribute Student student) {
+    Student found = students.stream()
+        .filter(s -> s.getId().equals(id))
+        .findFirst()
+        .orElse(null);
+    if (found != null) {
+      found.setName(student.getName());
+      found.setGroupId(student.getGroupId());
+    }
+    return "redirect:/student/all";
   }
 
   @GetMapping("/student/delete/{id}")
-  public String getDeleteStudent(@PathVariable String id, Model model) {
+  public String getDeleteStudent(@PathVariable String id) {
     students.removeIf(s -> s.getId().equals(id));
-    return "";
+    return "redirect:/student/all";
   }
 }

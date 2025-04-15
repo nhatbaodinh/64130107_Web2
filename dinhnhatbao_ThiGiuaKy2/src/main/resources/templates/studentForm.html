@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Student - Form</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<div class="main">
+  <div th:replace="layout::sidebar"></div>
+  <div class="content">
+    <div class="header" th:replace="layout::header"></div>
+    <div class="main-content">
+      <h1 class="title-page">Student - Add new</h1>
+      <form th:action="@{/student/new}" th:object="${student}" method="post">
+        <div>
+          <label for="id">ID:</label>
+          <input type="text" id="id" th:field="*{id}" required />
+        </div>
+
+        <div>
+          <label for="fullName">Full Name:</label>
+          <input type="text" id="fullName" th:field="*{name}" required />
+        </div>
+
+        <div>
+          <label for="groupName">Group Name:</label>
+          <input type="text" id="groupName" th:field="*{groupId}" required />
+        </div>
+
+        <div style="margin-top: 15px;">
+          <button type="submit">Save</button>
+          <a href="/student/all">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

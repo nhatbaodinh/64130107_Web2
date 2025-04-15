@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Topic - View</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+<div class="main">
+  <div th:replace="layout::sidebar"></div>
+  <div class="content">
+    <div class="header" th:replace="layout::header"></div>
+    <div class="main-content">
+    <h1 class="title-page">Topic - View</h1>
+    <div class="back-button">
+      <a href="/topic/all">Back</a>
+    </div>
+    <div class="topic-details">
+      <p><strong>ID:</strong> <span th:text="${topic.id}"></span></p>
+      <p><strong>Topic Name:</strong> <span th:text="${topic.topicName}"></span></p>
+      <p><strong>Description:</strong> <span th:text="${topic.topicDescription}"></span></p>
+      <p><strong>Supervisor ID:</strong> <span th:text="${topic.supervisorId}"></span></p>
+      <p><strong>Topic Type:</strong> <span th:text="${topic.topicType}"></span></p>
+    </div>
+    </div>
+  </div>
+</div>
+<div th:replace="layout::footer"></div>
+</body>
+</html>

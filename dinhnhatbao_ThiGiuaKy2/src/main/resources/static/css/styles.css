@@ -1,0 +1,200 @@
+/* Ensure the page occupies the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+/* Apply box-sizing globally */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Header */
+.header {
+    text-align: right;
+    width: 100%;
+    padding: 10px 10px 10px;
+    border-bottom: 1px solid black;
+}
+
+/* Logo */
+.logo img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Current user */
+.current-user {
+    font-weight: bold;
+}
+
+/* Main layout */
+.main {
+    display: flex;
+    flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+    padding: 20px;
+    width: 23%;
+    height: 100%; /* Adjusted for full height */
+    box-sizing: border-box;
+    border-right: 1px solid black;
+}
+
+.sidebar a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: auto;
+    border-top: 1px solid black;
+}
+
+/* Content */
+.content {
+    flex: 1;
+}
+
+.title-page {
+    margin-left: 20px;
+}
+.student-info {
+    margin-left: 20px;
+}
+
+/* Enhance form elements */
+form div {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+button[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+
+/* Add styling for tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Styling links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+a[onclick] {
+    color: #e74c3c;
+}
+
+a[onclick]:hover {
+    color: #c0392b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid black;
+    }
+
+    .content {
+        width: 100%;
+    }
+
+    .header {
+        padding: 10px;
+    }
+
+    .title-page {
+        margin-left: 0;
+    }
+
+    .student-info {
+        margin-left: 0;
+    }
+}
+
+
+.main-content {
+    margin: 0 20px;
+}

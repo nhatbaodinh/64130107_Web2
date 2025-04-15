@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Layout</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+  <div th:fragment="header" class="header">
+    <div class="current-user">
+      [Đinh Nhật Bảo]
+    </div>
+  </div>
+
+  <div th:fragment="sidebar" class="sidebar">
+    <div class="logo">
+      <img src="/img/logo.png" alt="Logo"/>
+    </div>
+    <a th:href="@{/}"><strong>Dashboard</strong></a>
+    <a th:href="@{/topic/all}">Topic - List</a>
+    <a th:href="@{/topic/new}">Topic - Add new</a>
+    <a style="height: 30px"></a>
+    <a th:href="@{/student/all}">Student - List</a>
+    <a th:href="@{/student/new}">Student - Add new</a>
+    <a style="height: 30px"></a>
+  </div>
+
+  <div th:fragment="footer" class="footer">
+    <p>©2025 by Đinh Nhật Bảo – FIT.NTU</p>
+  </div>
+</body>
+</html>
