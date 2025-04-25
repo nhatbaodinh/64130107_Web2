@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Customer</title>
+</head>
+<body>
+<table border="1">
+  <tr>
+    <th>ID</th>
+    <th>Họ tên</th>
+    <th>Tuổi</th>
+  </tr>
+  <tr th:each="customer : ${customers}">
+    <td th:text="${customer.id}"></td>
+    <td th:text="${customer.name}"></td>
+    <td th:text="${customer.age}"></td>
+  </tr>
+</table>
+
+</body>
+</html>
