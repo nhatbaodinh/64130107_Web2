@@ -1,0 +1,47 @@
+<footer class="ftco-footer ftco-bg-dark ftco-section" th:fragment="footerFragment(categories)">
+  <div class="container px-md-5">
+    <div class="row mb-5">
+      <!-- Bài viết theo danh mục -->
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4 ml-md-4">
+          <h2 class="ftco-heading-2">Bài viết theo danh mục</h2>
+          <ul class="list-unstyled categories">
+            <th:block th:each="cat : ${categories}">
+              <li>
+                <a th:href="@{'/category/' + ${cat.name}}">[[${cat.name}]] <span>([[${cat.postCount}]])</span></a>
+              </li>
+            </th:block>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Bài viết theo tháng -->
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Bài viết theo tháng</h2>
+          <ul class="list-unstyled categories">
+            <th:block th:each="item : ${postsByMonth}">
+              <li>
+                <a th:href="@{'/month/' + ${item[0]}}">[[${item[0]}]] <span>([[${item[1]}]])</span></a>
+              </li>
+            </th:block>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Liên hệ -->
+      <div class="col-md">
+        <div class="ftco-footer-widget mb-4">
+          <h2 class="ftco-heading-2">Liên hệ</h2>
+          <div class="block-23 mb-3">
+            <ul>
+              <li><span class="icon icon-map-marker"></span><span class="text">2 Đ. Nguyễn Đình Chiểu, Vĩnh Thọ, Nha Trang, Khánh Hòa 650000</span></li>
+              <li><a href="#"><span class="icon icon-phone"></span><span class="text">+84 123 123 123</span></a></li>
+              <li><a href="#"><span class="icon icon-envelope"></span><span class="text">bao.dn.64cntt@ntu.edu.vn</span></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

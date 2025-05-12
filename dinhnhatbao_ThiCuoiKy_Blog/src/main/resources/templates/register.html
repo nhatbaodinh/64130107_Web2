@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký tài khoản</title>
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+  <h2>Đăng ký tài khoản</h2>
+  <form action="/register" method="post">
+    <div>
+      <label for="username">Tên người dùng:</label>
+      <input type="text" id="username" name="username" required>
+    </div>
+    <div>
+      <label for="password">Mật khẩu:</label>
+      <input type="password" id="password" name="password" required>
+    </div>
+    <div>
+      <label for="fullName">Họ và tên:</label>
+      <input type="text" id="fullName" name="fullName" required>
+    </div>
+    <div>
+      <span th:if="${error}" style="color: red;" th:text="${error}"></span>
+      <span th:if="${message}" style="color: green;" th:text="${message}"></span>
+    </div>
+    <div>
+      <button type="submit">Đăng ký</button>
+    </div>
+  </form>
+  <p><a href="/login">Đã có tài khoản? Đăng nhập ngay!</a></p>
+</div>
+</body>
+</html>

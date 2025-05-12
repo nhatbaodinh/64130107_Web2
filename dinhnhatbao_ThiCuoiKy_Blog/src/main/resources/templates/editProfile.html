@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Blog - Chỉnh sửa thông tin</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/ionicons.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="colorlib-page">
+  <div th:replace="fragments/aside :: aside"></div>
+
+  <!-- Main Content -->
+  <div id="colorlib-main">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h2 class="heading-section">Chỉnh sửa thông tin cá nhân</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="account-info">
+              <form th:action="@{/editProfile}" method="post">
+                <!-- Hiển thị thông tin người dùng -->
+                <div>
+                  <label for="fullName">Họ và tên:</label>
+                  <input type="text" id="fullName" name="fullName" th:value="${user.fullName}" required />
+                </div>
+                <button type="submit" class="btn btn-primary">Lưu thay đổi</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div th:replace="fragments/footer :: footerFragment(${categories})"></div>
+  </div>
+  <!-- END Main Content -->
+</div>
+</body>
+</html>

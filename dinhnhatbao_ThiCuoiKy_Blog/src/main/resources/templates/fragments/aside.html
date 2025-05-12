@@ -1,0 +1,28 @@
+<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+  <h1 id="colorlib-logo"><a href="index.html">Blog<span>.</span></a></h1>
+  <nav id="colorlib-main-menu" role="navigation">
+    <ul>
+      <li><a href="index.html">Trang chủ</a></li>
+      <li><a href="travel.html">Bài viết</a></li>
+      <li><a href="about.html">Giới thiệu</a></li>
+      <li><a href="contact.html">Liên hệ</a></li>
+      <li>
+        <a th:if="${user == null}" th:href="@{/login}">Đăng nhập</a>
+        <span th:if="${user == null}">|</span>
+        <a th:if="${user == null}" th:href="@{/register}">Đăng ký</a>
+
+        <!-- Hiển thị Tài khoản nếu đã đăng nhập -->
+        <a th:if="${user != null}" href="/account">Tài khoản</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="colorlib-footer">
+    &copy;<script>document.write(new Date().getFullYear());</script> Blog. Tất cả các quyền được bảo lưu.
+    <ul style="font-size: 17px">
+      <li><a href="https://www.facebook.com/nhtbao.dnh"><i class="icon-facebook"></i></a></li>
+      <li><a href="https://www.instagram.com/nhtbao.dnh/"><i class="icon-instagram"></i></a></li>
+      <li><a href="https://www.linkedin.com/in/nhatbaodinh/"><i class="icon-linkedin"></i></a></li>
+    </ul>
+  </div>
+</aside>

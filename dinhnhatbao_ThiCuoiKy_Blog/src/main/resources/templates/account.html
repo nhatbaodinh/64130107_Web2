@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Tài khoản - Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+
+  <link rel="stylesheet" href="css/aos.css">
+
+  <link rel="stylesheet" href="css/ionicons.min.css">
+
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="colorlib-page">
+  <div th:replace="fragments/aside :: aside"></div>
+  <!-- Main content -->
+  <div id="colorlib-main">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-6 text-center">
+            <h2 class="heading-section">Thông tin Tài khoản</h2>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-8">
+            <div class="account-info">
+              <p>Tên người dùng: <span th:text="${user.username}">Tên người dùng</span></p>
+              <p>Họ tên đầy đủ: <span th:text="${user.fullName}">Họ tên đầy đủ</span></p>
+              <p>Vai trò: <span th:text="${user.role}">Vai trò</span></p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <a href="/editProfile" class="btn btn-primary">Chỉnh sửa thông tin</a>
+              </div>
+              <div class="col-md-6 text-center">
+                <a href="/logout" class="btn btn-danger">Đăng xuất</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gọi footer fragment -->
+    <div th:replace="fragments/footer :: footerFragment(${categories})"></div>
+  </div>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
