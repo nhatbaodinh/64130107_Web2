@@ -2,20 +2,23 @@
   <h1 id="colorlib-logo"><a href="index.html">Blog<span>.</span></a></h1>
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
-      <li><a href="index">Trang chủ</a></li>
-      <li><a href="posts">Bài viết</a></li>
-      <li><a href="about">Giới thiệu</a></li>
-      <li><a href="contact">Liên hệ</a></li>
+      <li><a href="/index">Trang chủ</a></li>
+      <li><a href="/posts">Bài viết</a></li>
+      <li><a href="/about">Giới thiệu</a></li>
+      <li><a href="/contact">Liên hệ</a></li>
       <li>
         <a th:if="${user == null}" th:href="@{/login}">Đăng nhập</a>
         <span th:if="${user == null}">|</span>
         <a th:if="${user == null}" th:href="@{/register}">Đăng ký</a>
 
         <!-- Hiển thị Tài khoản nếu đã đăng nhập -->
-        <a th:if="${user != null}" href="account">Tài khoản</a>
+        <a th:if="${user != null}" href="/account">Tài khoản</a>
       </li>
       <li th:if="${user != null and user.role.name() == 'ADMIN'}">
-        <a href="admin">Quản lý bài viết</a>
+        <a href="/categories">Quản lý danh mục</a>
+      </li>
+      <li th:if="${user != null and user.role.name() == 'ADMIN'}">
+        <a href="/posts/new">Thêm bài viết</a>
       </li>
     </ul>
   </nav>

@@ -58,19 +58,18 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="row">
 							<div class="col-md-4" th:each="post : ${latestPosts}">
 								<div class="blog-entry ftco-animate">
-									<a th:href="@{/posts/{id}(id=${post.id})}" class="img img-2"
+									<a th:href="@{/post/{id}(id=${post.id})}" class="img img-2"
 										 th:style="'background-image: url(' + ${post.imageUrl} + ');'"></a>
 									<div class="text text-2 pt-2 mt-3">
 										<span class="category mb-3 d-block">
 											<a href="#" th:text="${post.category.name}">Category</a>
 										</span>
 											<h3 class="mb-4">
-												<a th:href="@{/posts/{id}(id=${post.id})}" th:text="${#strings.abbreviate(post.title, 100)}">Tiêu đề</a>
+												<a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}">Tiêu đề</a>
 											</h3>
-											<p class="mb-4" th:text="${#strings.abbreviate(post.content, 200)}">Tóm tắt nội dung</p>
+											<p class="mb-4" th:text="${#strings.abbreviate(post.content, 100)}">Tóm tắt nội dung</p>
 											<div class="author mb-4 d-flex align-items-center">
 												<div class="ml-3 info">
 													<span>Viết bởi</span>
@@ -82,13 +81,12 @@
 											</div>
 											<div class="meta-wrap align-items-center">
 												<div class="half">
-													<p><a th:href="@{/posts/{id}(id=${post.id})}" class="btn py-2">Đọc tiếp <span class="ion-ios-arrow-forward"></span></a></p>
+													<p><a th:href="@{/post/{id}(id=${post.id})}" class="btn py-2">Đọc tiếp <span class="ion-ios-arrow-forward"></span></a></p>
 												</div>
 											</div>
 									</div>
 								</div>
 							</div>
-						</div>
 					</div>
 				</div>
 			</section>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-  <title>Tạo Bài Viết Mới - Blog</title>
+  <title>Chỉnh sửa Bài Viết - Blog</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -31,13 +31,16 @@
       <div class="container">
         <div class="row justify-content-center mb-5">
           <div class="col-md-8 text-center">
-            <h2 class="heading-section">Tạo Bài Viết Mới</h2>
+            <h2 class="heading-section">Chỉnh sửa Bài Viết</h2>
           </div>
         </div>
 
         <div class="row justify-content-center">
           <div class="col-md-10">
-            <form th:action="@{/posts/save}" th:object="${post}" method="post" enctype="multipart/form-data" class="bg-light p-5 contact-form">
+            <form th:action="@{/posts/update/{id}(id=${post.id})}" th:object="${post}" method="post" enctype="multipart/form-data" class="bg-light p-5 contact-form">
+              <!-- RESTful PUT -->
+              <input type="hidden" name="_method" value="put" />
+
               <div class="form-group">
                 <label>Tiêu đề</label>
                 <input type="text" th:field="*{title}" class="form-control" placeholder="Nhập tiêu đề bài viết">
@@ -53,18 +56,19 @@
                 <select th:field="*{category.id}" class="form-control">
                   <option th:each="category : ${categories}"
                           th:value="${category.id}"
-                          th:text="${category.name}">
+                          th:text="${category.name}"
+                          th:selected="${category.id == post.category.id}">
                   </option>
                 </select>
               </div>
 
               <div class="form-group">
-                <label>Hình ảnh</label>
+                <label>Hình ảnh mới (nếu cần thay đổi)</label>
                 <input type="file" name="imageFile" class="form-control-file">
               </div>
 
               <div class="form-group text-center">
-                <button type="submit" class="btn btn-primary py-3 px-5">Đăng bài</button>
+                <button type="submit" class="btn btn-success py-3 px-5">Cập nhật bài viết</button>
               </div>
             </form>
           </div>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="vi">
+<head>
+	<title th:text="${post.title}">Chi tiết Bài Viết - Blog</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<!-- Font và CSS -->
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+	<link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
+	<link rel="stylesheet" href="/css/animate.css">
+	<link rel="stylesheet" href="/css/owl.carousel.min.css">
+	<link rel="stylesheet" href="/css/owl.theme.default.min.css">
+	<link rel="stylesheet" href="/css/magnific-popup.css">
+	<link rel="stylesheet" href="/css/aos.css">
+	<link rel="stylesheet" href="/css/ionicons.min.css">
+	<link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+	<link rel="stylesheet" href="/css/jquery.timepicker.css">
+	<link rel="stylesheet" href="/css/flaticon.css">
+	<link rel="stylesheet" href="/css/icomoon.css">
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<div id="colorlib-page">
+	<div th:replace="fragments/aside :: aside"></div>
+
+	<div id="colorlib-main">
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5">
+					<div class="col-md-8 text-center">
+						<h2 class="heading-section" th:text="${post.title}">Tiêu đề bài viết</h2>
+					</div>
+				</div>
+
+				<div class="row justify-content-center">
+					<div class="col-md-10">
+						<div class="bg-light p-5">
+							<p><strong>Tác giả:</strong> <span th:text="${post.author.fullName}">Tên tác giả</span></p>
+							<p><strong>Ngày tạo:</strong> <span th:text="${#temporals.format(post.createdAt, 'dd/MM/yyyy HH:mm')}">dd/MM/yyyy</span></p>
+							<p><strong>Danh mục:</strong> <span th:text="${post.category.name}">Tên danh mục</span></p>
+
+							<div th:if="${post.imageUrl != null}" class="mb-4">
+								<img th:src="@{${post.imageUrl}}" alt="Hình ảnh bài viết" class="img-fluid rounded">
+							</div>
+
+							<hr/>
+
+							<div th:utext="${post.content}" class="mb-5" style="line-height: 1.6;">
+								Nội dung bài viết
+							</div>
+
+							<div class="text-center">
+								<a th:href="@{/posts}" class="btn btn-primary px-4 py-2 ml-2">Quay lại</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Footer -->
+		<div th:replace="fragments/footer :: footerFragment(${categories})"></div>
+	</div>
+</div>
+
+<!-- Scripts -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>

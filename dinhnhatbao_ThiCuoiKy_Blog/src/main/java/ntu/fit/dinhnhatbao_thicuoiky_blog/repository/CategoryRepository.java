@@ -2,13 +2,13 @@ package ntu.fit.dinhnhatbao_thicuoiky_blog.repository;
 
 import ntu.fit.dinhnhatbao_thicuoiky_blog.dto.CategoryPostCount;
 import ntu.fit.dinhnhatbao_thicuoiky_blog.model.Category;
-import ntu.fit.dinhnhatbao_thicuoiky_blog.model.Post;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CategoryRepository extends CrudRepository<Category, Long> {
+public interface CategoryRepository extends CrudRepository<Category, Long>, JpaRepository<Category, Long> {
 
   @Query("SELECT c.name AS name, COUNT(p.id) AS postCount " +
       "FROM Category c LEFT JOIN c.posts p " +
@@ -18,4 +18,10 @@ public interface CategoryRepository extends CrudRepository<Category, Long> {
 
   @Query("SELECT c FROM Category c")
   List<Category> findAll();
+
+  @Query("SELECT c FROM Category c WHERE c.name = ?1")
+  Category findByName(String name);
+
+  boolean existsByNameIgnoreCase(String name);
+
 }

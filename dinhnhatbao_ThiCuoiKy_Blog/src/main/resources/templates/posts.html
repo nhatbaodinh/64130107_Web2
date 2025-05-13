@@ -40,13 +40,13 @@
 							<div class="row">
 								<div class="col-md-12" th:each="post : ${posts}">
 									<div class="blog-entry ftco-animate">
-										<a th:href="@{'/post/' + ${post.id}}" class="img" th:style="'background-image: url(' + ${post.imageUrl} + ');'"></a>
+										<a th:href="@{/post/{id}(id=${post.id})}" class="img" th:style="'background-image: url(' + ${post.imageUrl} + ');'"></a>
 										<div class="text pt-2 mt-3">
 											<span class="category mb-1 d-block">
 												<a th:href="@{'/category/' + ${post.category.id}}" th:text="${post.category.name}">Technology</a>
 											</span>
 											<h3 class="mb-4">
-												<a th:href="@{'/post/' + ${post.id}}" th:text="${post.title}">The Newest Technology On This Year 2019</a>
+												<a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}">The Newest Technology On This Year 2019</a>
 											</h3>
 											<p class="mb-4" th:text="${#strings.abbreviate(post.content, 150)}">
 												<!-- Nội dung rút gọn -->
@@ -63,7 +63,16 @@
 											</div>
 											<div class="meta-wrap d-md-flex align-items-center">
 												<div class="half">
-													<p><a th:href="@{'/post/' + ${post.id}}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Đọc tiếp</a></p>
+													<p>
+														<a th:href="@{/post/{id}(id=${post.id})}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Đọc tiếp</a>
+														<div th:if="${user != null and user.role.name() == 'ADMIN'}">
+															<a th:href="@{/posts/edit/{id}(id=${post.id})}" class="btn btn-success p-3 px-xl-4 py-xl-3">Sửa</a>
+															<form th:action="@{/posts/delete/{id}(id=${post.id})}" method="post" style="display: inline;">
+																<input type="hidden" name="_method" value="delete" />
+																<button class="btn btn-danger p-3 px-xl-4 py-xl-3" type="submit" onclick="return confirm('Bạn có chắc muốn xoá bài viết này?')">Xoá</button>
+															</form>
+														</div>
+													</p>
 												</div>
 											</div>
 										</div>
@@ -74,13 +83,11 @@
 			          <div class="col">
 			            <div class="block-27">
 			              <ul>
-			                <li><a href="#">&lt;</a></li>
-			                <li class="active"><span>1</span></li>
-			                <li><a href="#">2</a></li>
-			                <li><a href="#">3</a></li>
-			                <li><a href="#">4</a></li>
-			                <li><a href="#">5</a></li>
-			                <li><a href="#">&gt;</a></li>
+<!--											<th:block th:each="i : ${#numbers.sequence(1, totalPages)}">-->
+<!--												<li th:class="${i == currentPage} ? 'active' : ''">-->
+<!--													<a th:href="@{/posts(page=${i})}" th:text="${i}"></a>-->
+<!--												</li>-->
+<!--											</th:block>-->
 			              </ul>
 			            </div>
 			          </div>
@@ -88,7 +95,7 @@
 	    			</div><!-- END-->
 	    			<div class="col-lg-4 sidebar ftco-animate">
 	            <div class="sidebar-box">
-	              <form action="#" class="search-form">
+								<form th:action="@{/search}" method="get" class="search-form">
 	                <div class="form-group">
 	                  <span class="icon icon-search"></span>
 	                  <input type="text" class="form-control" placeholder="Tìm kiếm bài viết">
