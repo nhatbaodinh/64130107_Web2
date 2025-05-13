@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>New Post</title>
+</head>
+<body>
+<h1>Create New Post</h1>
+
+<form th:action="@{/posts/save}" th:object="${post}" method="post" enctype="multipart/form-data">
+  <label>Title:</label>
+  <input type="text" th:field="*{title}" /><br/>
+
+  <label>Content:</label>
+  <textarea th:field="*{content}"></textarea><br/>
+
+  <label>Category:</label>
+  <select th:field="*{category.id}">
+    <option th:each="category : ${categories}"
+            th:value="${category.id}"
+            th:text="${category.name}">
+    </option>
+  </select><br/>
+
+  <label>Image:</label>
+  <input type="file" name="imageFile" />
+
+  <button type="submit">Save</button>
+</form>
+</body>
+</html>

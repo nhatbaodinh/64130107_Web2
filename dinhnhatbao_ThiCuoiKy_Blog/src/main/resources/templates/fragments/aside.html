@@ -2,22 +2,25 @@
   <h1 id="colorlib-logo"><a href="index.html">Blog<span>.</span></a></h1>
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
-      <li><a href="index.html">Trang chủ</a></li>
-      <li><a href="travel.html">Bài viết</a></li>
-      <li><a href="about.html">Giới thiệu</a></li>
-      <li><a href="contact.html">Liên hệ</a></li>
+      <li><a href="index">Trang chủ</a></li>
+      <li><a href="posts">Bài viết</a></li>
+      <li><a href="about">Giới thiệu</a></li>
+      <li><a href="contact">Liên hệ</a></li>
       <li>
         <a th:if="${user == null}" th:href="@{/login}">Đăng nhập</a>
         <span th:if="${user == null}">|</span>
         <a th:if="${user == null}" th:href="@{/register}">Đăng ký</a>
 
         <!-- Hiển thị Tài khoản nếu đã đăng nhập -->
-        <a th:if="${user != null}" href="/account">Tài khoản</a>
+        <a th:if="${user != null}" href="account">Tài khoản</a>
+      </li>
+      <li th:if="${user != null and user.role.name() == 'ADMIN'}">
+        <a href="admin">Quản lý bài viết</a>
       </li>
     </ul>
   </nav>
 
-  <div class="colorlib-footer">
+  <div class="colorlib-footer" style="font-size: 13px">
     &copy;<script>document.write(new Date().getFullYear());</script> Blog. Tất cả các quyền được bảo lưu.
     <ul style="font-size: 17px">
       <li><a href="https://www.facebook.com/nhtbao.dnh"><i class="icon-facebook"></i></a></li>
