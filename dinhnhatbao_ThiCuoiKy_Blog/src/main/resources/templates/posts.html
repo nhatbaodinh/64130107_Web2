@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="vi">
   <head>
-    <title>Elen - Free Bootstrap 4 Template by Colorlib</title>
+    <title>Blog - Tất cả bài viết</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
@@ -79,28 +79,15 @@
 									</div>
 								</div>
 							</div>
-	    				<div class="row mt-5">
-			          <div class="col">
-			            <div class="block-27">
-			              <ul>
-<!--											<th:block th:each="i : ${#numbers.sequence(1, totalPages)}">-->
-<!--												<li th:class="${i == currentPage} ? 'active' : ''">-->
-<!--													<a th:href="@{/posts(page=${i})}" th:text="${i}"></a>-->
-<!--												</li>-->
-<!--											</th:block>-->
-			              </ul>
-			            </div>
-			          </div>
-			        </div>
 	    			</div><!-- END-->
 	    			<div class="col-lg-4 sidebar ftco-animate">
 	            <div class="sidebar-box">
-								<form th:action="@{/search}" method="get" class="search-form">
-	                <div class="form-group">
-	                  <span class="icon icon-search"></span>
-	                  <input type="text" class="form-control" placeholder="Tìm kiếm bài viết">
-	                </div>
-	              </form>
+								<form th:action="@{/posts/search}" method="get" class="search-form">
+									<div class="form-group">
+										<span class="icon icon-search"></span>
+										<input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm bài viết" required>
+									</div>
+								</form>
 	            </div>
 	            <div class="sidebar-box ftco-animate">
 	            	<h3 class="sidebar-heading">Danh mục</h3>
@@ -112,22 +99,12 @@
 									</th:block>
 	              </ul>
 	            </div>
-
-							<div class="sidebar-box ftco-animate">
-								<h3 class="sidebar-heading">Bài viết theo tháng</h3>
-								<ul class="categories">
-									<th:block th:each="item : ${postsByMonth}">
-										<li>
-											<a th:href="@{'/month/' + ${item[0]}}" th:text="${item[0]} + ' (' + ${item[1]} + ')'"></a>
-										</li>
-									</th:block>
-								</ul>
-							</div>
 	          </div><!-- END COL -->
 	    		</div>
 	    	</div>
 	    </section>
-			<div th:replace="fragments/footer :: footerFragment(${categories})"></div>
+
+			<div th:replace="fragments/footer :: footerFragment(${categories_footer})"></div>
 		</div><!-- END COLORLIB-MAIN -->
 	</div><!-- END COLORLIB-PAGE -->
 

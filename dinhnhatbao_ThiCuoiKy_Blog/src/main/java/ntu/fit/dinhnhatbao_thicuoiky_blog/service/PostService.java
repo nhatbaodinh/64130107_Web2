@@ -13,19 +13,7 @@ import java.util.List;
 public class PostService {
   private final PostRepository postRepository;
 
-  public List<Post> getAllPosts() {
-    return postRepository.findAllPosts();
-  }
-
-  public List<Object[]> getPostsCountByMonthLimit(int limit) {
-    List<Object[]> all = postRepository.findPostsCountByMonth();
-    return all.subList(0, Math.min(limit, all.size())); // an toàn
-  }
-
-  public List<Post> getLatestPosts(int limit) {
-    return postRepository.findLatestPosts(PageRequest.of(0, limit));
-  }
-
+  // CRUD
   public void savePost(Post post) {
     postRepository.save(post);
   }
@@ -36,5 +24,30 @@ public class PostService {
 
   public Post findById(Long id) {
     return postRepository.findById(id).orElse(null);
+  }
+
+  // Lấy danh sách bài viết
+  public List<Post> getAllPosts() {
+    return postRepository.findAllPosts();
+  }
+
+  // Lấy danh sách bài viết theo danh mục
+  public List<Post> getLatestPosts(int limit) {
+    return postRepository.findLatestPosts(PageRequest.of(0, limit));
+  }
+
+  public List<Post> getPostsByMonth(String month) {
+    return postRepository.findPostsByMonth(month);
+  }
+
+  // Lấy danh sách bài viết theo tiêu đề
+  public List<Post> searchPosts(String keyword) {
+    return postRepository.searchPosts(keyword);
+  }
+
+  // Lấy danh sách bài viết theo tiêu đề và danh mục
+  public List<Object[]> getPostsCountByMonthLimit(int limit) {
+    List<Object[]> all = postRepository.findPostsCountByMonth();
+    return all.subList(0, Math.min(limit, all.size())); // an toàn
   }
 }

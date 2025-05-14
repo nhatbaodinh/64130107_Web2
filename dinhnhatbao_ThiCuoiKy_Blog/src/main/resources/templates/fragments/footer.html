@@ -1,4 +1,4 @@
-<footer class="ftco-footer ftco-bg-dark ftco-section" th:fragment="footerFragment(categories)">
+<footer class="ftco-footer ftco-bg-dark ftco-section" th:fragment="footerFragment(categories_footer)">
   <div class="container px-md-5">
     <div class="row mb-5">
       <!-- Bài viết theo danh mục -->
@@ -6,9 +6,11 @@
         <div class="ftco-footer-widget mb-4 ml-md-4">
           <h2 class="ftco-heading-2">Bài viết theo danh mục</h2>
           <ul class="list-unstyled categories">
-            <th:block th:each ="category : ${categories}">
+            <th:block th:each="category : ${categories_footer}">
               <li>
-                <a th:href="@{/category/{id}(id=${category.name})}">[[${category.name}]] <span>([[${category.postCount}]])</span></a>
+                <a th:href="@{/category/{id}(id=${category.id})}">
+                  [[${category.name}]] <span>([[${category.postCount}]])</span>
+                </a>
               </li>
             </th:block>
           </ul>
@@ -16,14 +18,13 @@
       </div>
 
       <!-- Bài viết theo tháng -->
-      <!-- Bài viết theo tháng -->
       <div class="col-md">
         <div class="ftco-footer-widget mb-4">
           <h2 class="ftco-heading-2">Bài viết theo tháng</h2>
           <ul class="list-unstyled categories">
             <th:block th:each="item : ${postsByMonth}">
               <li>
-                <a th:href="@{/month/{month}(month=${item[0]})}">[[${item[0]}]] <span>([[${item[1]}]])</span></a>
+                <a th:href="@{/posts/{month}(month=${item[0]})}">[[${item[0]}]] <span>([[${item[1]}]])</span></a>
               </li>
             </th:block>
           </ul>

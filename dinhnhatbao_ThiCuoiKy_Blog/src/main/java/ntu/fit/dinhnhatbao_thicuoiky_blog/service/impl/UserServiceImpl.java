@@ -25,19 +25,18 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public Optional<User> loginUser(String username, String password) {
-    Optional<User> userOpt = userRepository.findByUsername(username);
-    if (userOpt.isPresent()) {
-      User user = userOpt.get();
-      if (passwordEncoder.matches(password, user.getPassword())) {
-        return Optional.of(user);
-      }
-    }
-    return Optional.empty();
+    return userRepository.findByUsername(username)
+        .filter(user -> passwordEncoder.matches(password, user.getPassword()));
   }
 
   @Override
   public void save(User user) {
     user.setPassword(passwordEncoder.encode(user.getPassword()));
     userRepository.save(user);
+  }
+
+  @Override
+  public Optional<User> findByUsername(String username) {
+    return userRepository.findByUsername(username);
   }
 }

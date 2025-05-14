@@ -20,18 +20,16 @@ public class HomeController {
   @GetMapping({"/", "/home", "/index", "/index.html"})
   public String indexPage(HttpSession session, Model model) {
     // Lấy user từ session (nếu có)
-    User currentUser = (User) session.getAttribute("user");
-    if (currentUser != null) {
-      model.addAttribute("user", currentUser);
-    }
+    User user = (User) session.getAttribute("user");
+    model.addAttribute("user", user);
+
+    // Lấy danh sách danh mục theo số lượng bài viết
+    model.addAttribute("categories_footer", categoryService.getTopCategories(4));
 
     // Lấy danh sách bài viết mới nhất
     model.addAttribute("latestPosts", postService.getLatestPosts(3));
 
-    // Lấy danh sách danh mục theo số lượng bài viết
-    model.addAttribute("categories", categoryService.getTopCategories(4));
-
-    // Lấy so luong bài viết theo tháng
+    // Lấy số lượng bài viết theo tháng
     model.addAttribute("postsByMonth", postService.getPostsCountByMonthLimit(4));
 
     return "index";

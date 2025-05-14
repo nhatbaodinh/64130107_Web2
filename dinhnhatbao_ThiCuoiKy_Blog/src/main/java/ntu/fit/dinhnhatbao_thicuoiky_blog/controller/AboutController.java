@@ -23,9 +23,9 @@ public class AboutController {
     model.addAttribute("user", user);
 
     // Lấy danh sách danh mục theo số lượng bài viết
-    model.addAttribute("categories", categoryService.getTopCategories(4));
+    model.addAttribute("categories_footer", categoryService.getTopCategories(4));
 
-    // Lấy so luong bài viết theo tháng
+    // Lấy số lượng bài viết theo tháng
     model.addAttribute("postsByMonth", postService.getPostsCountByMonthLimit(4));
 
     return "about";

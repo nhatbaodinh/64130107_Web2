@@ -17,21 +17,52 @@ public class UserController {
   @Autowired
   private UserService userService;
 
+  // Trang đăng nhập
   @GetMapping("/login")
   public String loginPage() {
-    return "login"; // return login.html
+    return "login"; // Trả về trang login.html
   }
 
+  // Trang đăng ký
   @GetMapping("/register")
   public String registerPage() {
-    return "register"; // return register.html
+    return "register"; // Trả về trang register.html
   }
 
+
+  // Đăng nhập tài khoản
+  @PostMapping("/login")
+  public String login(@RequestParam String username,
+                      @RequestParam String password,
+                      HttpSession session,
+                      RedirectAttributes redirectAttributes) {
+
+    Optional<User> userOpt = userService.loginUser(username, password);
+
+    if (userOpt.isPresent()) {
+      User user = userOpt.get();
+
+      if (!user.isEnabled()) {
+        redirectAttributes.addFlashAttribute("error", "Tài khoản đã bị khóa.");
+        return "redirect:/login";
+      }
+
+      // Lưu session người dùng sau khi đăng nhập
+      session.setAttribute("user", user);
+      return "redirect:/home";
+    }
+
+    redirectAttributes.addFlashAttribute("error", "Sai tên đăng nhập hoặc mật khẩu.");
+    return "redirect:/login";
+  }
+
+  // Đăng ký tài khoản
   @PostMapping("/register")
   public String register(@RequestParam String username,
                          @RequestParam String password,
                          @RequestParam String fullName,
                          RedirectAttributes redirectAttributes) {
+
     try {
       if (userService.existsByUsername(username)) {
         redirectAttributes.addFlashAttribute("error", "Tên người dùng đã tồn tại.");
@@ -56,30 +87,10 @@ public class UserController {
     }
   }
 
-  @PostMapping("/login")
-  public String login(@RequestParam String username,
-                      @RequestParam String password,
-                      HttpSession session,
-                      RedirectAttributes redirectAttributes) {
-    Optional<User> userOpt = userService.loginUser(username, password);
-    if (userOpt.isPresent()) {
-      User user = userOpt.get();
-      if (!user.isEnabled()) {
-        redirectAttributes.addFlashAttribute("error", "Tài khoản đã bị khóa.");
-        return "redirect:/login";
-      }
-
-      session.setAttribute("user", user); // lưu nguyên user nếu cần lấy role, fullName...
-      return "redirect:/home";
-    } else {
-      redirectAttributes.addFlashAttribute("error", "Sai tên đăng nhập hoặc mật khẩu.");
-      return "redirect:/login";
-    }
-  }
-
+  // Đăng xuất tài khoản
   @GetMapping("/logout")
   public String logout(HttpSession session) {
-    session.invalidate();
+    session.invalidate(); // Hủy session hiện tại
     return "redirect:/login";
   }
 }

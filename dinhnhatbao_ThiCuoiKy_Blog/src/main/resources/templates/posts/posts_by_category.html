@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <title>Bài viết trong danh mục [[${category.name}]]</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
+
+  <link rel="stylesheet" th:href="@{/css/open-iconic-bootstrap.min.css}">
+  <link rel="stylesheet" th:href="@{/css/animate.css}">
+  <link rel="stylesheet" th:href="@{/css/owl.carousel.min.css}">
+  <link rel="stylesheet" th:href="@{/css/owl.theme.default.min.css}">
+  <link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
+  <link rel="stylesheet" th:href="@{/css/aos.css}">
+  <link rel="stylesheet" th:href="@{/css/ionicons.min.css}">
+  <link rel="stylesheet" th:href="@{/css/bootstrap-datepicker.css}">
+  <link rel="stylesheet" th:href="@{/css/jquery.timepicker.css}">
+  <link rel="stylesheet" th:href="@{/css/flaticon.css}">
+  <link rel="stylesheet" th:href="@{/css/icomoon.css}">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div id="colorlib-page">
+  <div th:replace="fragments/aside :: aside"></div>
+  <div id="colorlib-main">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="row">
+              <div class="col-md-12" th:each="post : ${posts}">
+                <div class="blog-entry ftco-animate">
+                  <a th:href="@{/post/{id}(id=${post.id})}" class="img" th:style="'background-image: url(' + ${post.imageUrl} + ');'"></a>
+                  <div class="text pt-2 mt-3">
+											<span class="category mb-1 d-block">
+												<a th:href="@{'/category/' + ${post.category.id}}" th:text="${post.category.name}">Technology</a>
+											</span>
+                    <h3 class="mb-4">
+                      <a th:href="@{/post/{id}(id=${post.id})}" th:text="${post.title}">The Newest Technology On This Year 2019</a>
+                    </h3>
+                    <p class="mb-4" th:text="${#strings.abbreviate(post.content, 150)}">
+                      <!-- Nội dung rút gọn -->
+                    </p>
+                    <div class="author mb-4 d-flex align-items-center">
+                      <a href="#" class="img" th:style="'background-image: url(' + @{/images/person_1.jpg} + ');'"></a>
+                      <div class="ml-3 info">
+                        <span>Viết bởi</span>
+                        <h3>
+                          <a href="#" th:text="${post.author.fullName}">Dave Lewis</a>,
+                          <span th:text="${#temporals.format(post.createdAt, 'dd/MM/yyyy')}">28/11/2018</span>
+                        </h3>
+                      </div>
+                    </div>
+                    <div class="meta-wrap d-md-flex align-items-center">
+                      <div class="half">
+                        <p>
+                          <a th:href="@{/post/{id}(id=${post.id})}" class="btn btn-primary p-3 px-xl-4 py-xl-3">Đọc tiếp</a>
+                        <div th:if="${user != null and user.role.name() == 'ADMIN'}">
+                          <a th:href="@{/posts/edit/{id}(id=${post.id})}" class="btn btn-success p-3 px-xl-4 py-xl-3">Sửa</a>
+                          <form th:action="@{/posts/delete/{id}(id=${post.id})}" method="post" style="display: inline;">
+                            <input type="hidden" name="_method" value="delete" />
+                            <button class="btn btn-danger p-3 px-xl-4 py-xl-3" type="submit" onclick="return confirm('Bạn có chắc muốn xoá bài viết này?')">Xoá</button>
+                          </form>
+                        </div>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- END-->
+          <div class="col-lg-4 sidebar ftco-animate">
+            <div class="sidebar-box">
+              <form th:action="@{/posts/search}" method="get" class="search-form">
+                <div class="form-group">
+                  <span class="icon icon-search"></span>
+                  <input type="text" class="form-control" name="keyword" placeholder="Tìm kiếm bài viết" required>
+                </div>
+              </form>
+            </div>
+            <div class="sidebar-box ftco-animate">
+              <h3 class="sidebar-heading">Danh mục</h3>
+              <ul class="categories">
+                <th:block th:each="category : ${categories}">
+                  <li>
+                    <a th:href="@{'/category/' + ${category.id}}" th:text="${category.name} + ' (' + ${category.postCount} + ')'"></a>
+                  </li>
+                </th:block>
+              </ul>
+            </div>
+
+          </div><!-- END COL -->
+        </div>
+      </div>
+    </section>
+
+    <div th:replace="fragments/footer :: footerFragment(${categories_footer})"></div>
+  </div><!-- END COLORLIB-MAIN -->
+</div><!-- END COLORLIB-PAGE -->
+
+<!-- loader -->
+<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/jquery-migrate-3.0.1.min.js}"></script>
+<script th:src="@{/js/popper.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/jquery.easing.1.3.js}"></script>
+<script th:src="@{/js/jquery.waypoints.min.js}"></script>
+<script th:src="@{/js/jquery.stellar.min.js}"></script>
+<script th:src="@{/js/owl.carousel.min.js}"></script>
+<script th:src="@{/js/jquery.magnific-popup.min.js}"></script>
+<script th:src="@{/js/aos.js}"></script>
+<script th:src="@{/js/jquery.animateNumber.min.js}"></script>
+<script th:src="@{/js/bootstrap-datepicker.js}"></script>
+<script th:src="@{/js/jquery.timepicker.min.js}"></script>
+<script th:src="@{/js/scrollax.min.js}"></script>
+<script th:src="@{/js/google-map.js}"></script>
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>
