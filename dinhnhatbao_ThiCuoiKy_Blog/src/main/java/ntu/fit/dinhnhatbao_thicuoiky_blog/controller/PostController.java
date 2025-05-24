@@ -54,7 +54,10 @@ public class PostController {
   @PostMapping("posts/save")
   public String createPost(@ModelAttribute Post post,
                            @RequestParam("imageFile") MultipartFile imageFile,
-                           HttpServletRequest request) throws IOException {
+                           HttpServletRequest request, HttpSession session) throws IOException {
+    User user = (User) session.getAttribute("user");
+    if (user == null || user.getRole() != Role.ADMIN) return "redirect:/";
+
     // Tạo tên file duy nhất
     String filename = UUID.randomUUID() + "_" + imageFile.getOriginalFilename();
 
@@ -71,7 +74,6 @@ public class PostController {
     post.setImageUrl("/uploads/images/post/" + filename);
     post.setCreatedAt(LocalDateTime.now());
 
-    User user = (User) request.getSession().getAttribute("user");
     if (user != null) post.setAuthor(user);
 
     postService.savePost(post);
